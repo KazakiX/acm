@@ -1,0 +1,14 @@
+<div class="year">
+    <ul class="nav nav-pills nav-stacked nava" id="nava">
+        {{each Years}}
+        <li role="presentation"><a href="/year/{{$value.year}}/excel/Models">{{$value.year}}</a></li>
+        {{/each}}
+
+    </ul>
+    <div>
+        <form action="/addyear/" method='post'>
+            <input type="text" class="inputBox" style="width: 100%;" name='year'>
+            <button type="submit" style="width: 100%;">添加</button>
+        </form>
+    </div>
+</div>

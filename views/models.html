@@ -1,0 +1,108 @@
+{{extend './_layouts/home.html'}} {{block 'title'}}{{'多人博客 - 首页'}}{{/block}} {{block 'body'}}
+
+
+
+
+<section class="container">
+
+    <div class="choice">
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation"><a href="/year/{{year}}/excel/Models">ACM获奖</a></li>
+            <li role="presentation"><a href="/year/{{year}}/excel/Group">ACM队员</a></li>
+            <li role="presentation"><a href="/year/{{year}}/excel/Action">校内活动</a></li>
+            <li role="presentation"><a href="/year/{{year}}/excel/Coach">教练</a></li>
+        </ul>
+    </div>
+    {{include './_partials/year.html'}}
+    <div class="neirong">
+        <p><a href="" class='btn btn-success'>内容</a> </p>
+        {{each Models}}
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/upload/{{$value.imgname}}" alt="...">
+                <div class="caption">
+                    <ul>
+                        <li>名称:{{$value.name}}</li>
+                        <li>时间:{{$value.time}}</li>
+                        <li>介绍:{{$value.detail}}</li>
+                        <li>其它:{{$value.others}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{/each}} {{each Group}}
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/upload/{{$value.imgname}}" alt="...">
+                <div class="caption">
+                    <ul>
+                        <li>专业班级：{{$value.name}}</li>
+                        <li>姓名：{{$value.gender}}</li>
+                        <li>性别：{{$value.age}}</li>
+                        <li>去向：{{$value.hobbies}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{/each}} {{each Action}}
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/upload/{{$value.imgname}}" alt="...">
+                <div class="caption">
+                    <ul>
+                        <li>活动名称：{{$value.name}}</li>
+                        <li>时间：{{$value.time}}</li>
+                        <li>通知：{{$value.message}}</li>
+                        <li>结果：{{$value.result}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{/each}} {{each Coach}}
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/upload/{{$value.imgname}}" alt="...">
+                <div class="caption">
+                    <ul>
+                        <li>院系：{{$value.yuan}}</li>
+                        <li>姓名：{{$value.name}}</li>
+                        <li>性别：{{$value.genter}}</li>
+                        <li>其它：{{$value.others}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{/each}}
+    </div>
+
+</section>
+<script>
+    $('.neirong').masonry({
+        itemSelector: '.col-sm-6',
+        columnWidth: 300
+    });
+</script>
+<script>
+    var a = 10;
+    var b = document.querySelector('.dropdown');
+    var c = document.querySelector('.yincang');
+    b.onclick = function() {
+        if (c.style.height == '0px' || c.style.height == 0) {
+            c.style.height = '120px';
+        } else {
+            c.style.height = '0px';
+        }
+        console.log('我好了');
+    }
+</script>
+
+
+{{/block}}

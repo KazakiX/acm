@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{block 'title'}}默认标题{{/block}}</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/vsb.css" />
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/public/css/main.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/public/css/index.css" rel="stylesheet">
+
+    <link href="/public/css/basic.css" rel="stylesheet">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css"> {{block 'head'}}{{/block}}
+</head>
+
+<body>
+    {{include '../_partials/header.html'}} {{block 'body'}}{{/block}} {{include '../_partials/footer.html'}}
+    <script src="/public/js/masonry.pkgd.min.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        var div = document.getElementById('nava');
+        div.scrollTop = div.scrollHeight;
+    </script>
+    {{block 'script'}}{{/block}}
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+{{extend './_layouts/home.html'}} {{block 'title'}}{{'多人博客 - 首页'}}{{/block}} {{block 'body'}}
+
+
+
+
+<section class="container">
+
+    <div class="choice">
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation"><a href="/year/{{year}}/excel/Models">ACM获奖</a></li>
+            <li role="presentation"><a href="/year/{{year}}/excel/Group">ACM队员</a></li>
+            <li role="presentation"><a href="/year/{{year}}/excel/Action">校内活动</a></li>
+            <li role="presentation"><a href="/year/{{year}}/excel/Coach">教练</a></li>
+        </ul>
+    </div>
+    <div class="neirong">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="sub-header">添加</h2>
+            <form action='/year/{{year}}/excel/{{item}}/edit' method='post' enctype="multipart/form-data">
+                <input type="file" name="logo">
+                <input type="hidden" name="id" value="{{items._id}}">
+                <div class="form-group">
+                    <label for="">名称</label>
+                    <input type="text" class="form-control" id="" name='name' value="{{items.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="">时间</label>
+                    <input type="text" class="form-control" id="" name='time' value="{{items.time}}">
+
+                </div>
+                <div class="form-group">
+                    <label for="">介绍</label>
+                    <input type="text" id="" name='detail' class="form-control" value="{{items.detail}}">
+                </div>
+                <div class="checkbox" class="form-group">
+                    <label for="">其它</label>
+                    <input type="text" id="" name='others' class="form-control" value="{{items.others}}">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    {{include './_partials/year.html'}}
+</section>
+<script>
+    var a = 10;
+    var b = document.querySelector('.dropdown');
+    var c = document.querySelector('.yincang');
+    b.onclick = function() {
+        if (c.style.height == '0px' || c.style.height == 0) {
+            c.style.height = '120px';
+        } else {
+            c.style.height = '0px';
+        }
+        console.log('我好了');
+    }
+</script>
+
+
+{{/block}}

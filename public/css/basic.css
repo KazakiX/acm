@@ -1,0 +1,86 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+section {
+    height: 800px;
+    width: 100%;
+    margin-top: 0;
+}
+
+body {
+    border: 1px solid rgb(11, 145, 145);
+    width: 100%;
+    height: auto;
+}
+
+.containe {
+    width: 100%;
+    margin-bottom: 0px
+}
+
+.choice {
+    width: 90%;
+    height: 80px;
+    top: 50px;
+    margin-top: 0;
+    float: right;
+}
+
+.choice .nav {
+    margin: 0 auto;
+}
+
+.year {
+    width: 8%;
+    height: 100%;
+    float: left;
+}
+
+.yincang {
+    overflow: hidden;
+    height: 0;
+    transition: 0.7s;
+}
+
+.neirong {
+    background: #fff;
+    width: 92%;
+    margin-bottom: 0;
+    float: right;
+}
+
+.header {
+    margin-top: 0;
+    height: 136px;
+    width: 100%;
+    background: url(/public/img/log.png) no-repeat
+}
+
+.nava {
+    height: 480px;
+    overflow-y: scroll
+}
+
+.caption ul {
+    text-align: auto;
+    list-style: none
+}
+
+.thumbnail {
+    float: left;
+    width: 260px;
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+.thumbnail img {
+    max-width: 250px;
+    max-height: 200px
+}
+
+.thumbnail li {
+    font-family: "微软雅黑";
+    line-height: 20px;
+}

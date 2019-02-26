@@ -1,0 +1,115 @@
+{{extend './_layouts/home.html'}} {{block 'title'}}{{'多人博客 - 首页'}}{{/block}} {{block 'body'}}
+
+
+
+
+<section class="container">
+
+    <div class="choice">
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation"><a href="/year/{{year}}/excel/Models">ACM获奖</a></li>
+            <li role="presentation"><a href="/year/{{year}}/excel/Group">ACM队员</a></li>
+            <li role="presentation"><a href="/year/{{year}}/excel/Action">校内活动</a></li>
+            <li role="presentation"><a href="/year/{{year}}/excel/Coach">教练</a></li>
+        </ul>
+    </div>
+    <div class="neirong">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <h2 class="sub-header">添加</h2>
+
+            <form action='/year/{{year}}/excel/{{item}}/new' method='post' class='wsh' enctype="multipart/form-data">
+                <input type="file" name="logo">
+                <div class="form-group">
+                    <label for="">活动名称</label>
+                    <input type="text" class="form-control" id="" name='name'>
+                </div>
+                <div class="form-group">
+                    <label for="">时间</label>
+                    <input type="text" class="form-control" id="" name='time'>
+                </div>
+                <div class="form-group">
+                    <label for="">通知</label>
+                    <input type="text" id="" name='message' class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">结果</label>
+                    <input type="text" class="form-control" id="" name='result'>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    {{include './_partials/year.html'}}
+</section>
+<script>
+    var a = 10;
+    var b = document.querySelector('.dropdown');
+    var c = document.querySelector('.yincang');
+    b.onclick = function() {
+        if (c.style.height == '0px' || c.style.height == 0) {
+            c.style.height = '120px';
+        } else {
+            c.style.height = '0px';
+        }
+        console.log('我好了');
+    }
+</script>
+<script>
+    $(".wsh input").on('change', function(e) {
+        var filearr = [];
+        var files = this.files;
+        for (var i = 0; i < files.length; i++) {
+            filearr.push(files[i]);
+        }
+        var formData = new FormData();
+        for (var i = 0; i < filearr.length; i++) { //提交时，我们把filearr中的数据遍历一遍
+            formData.append("file", filearr[i]); //用append添加到formData中，就得用户最终要提交的图片了，多张的话[]必须    
+        };
+
+        $.ajax({
+            type: "POST",
+            url: path + "updateUserAvatar", //请求路径
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                //get user info
+                if (200 === data.code) { //这里是后台已经保存成功了，我把新的图片地址存入数据库。直接传送没办法传入userId
+                    $(".wsh div").attr("style", "background:url(" + data.data + ") center no-repeat"); //这里是先显示存入成功的图片，实际上这一步执行的时候数据表的存储地址还没有改变。
+                    var url = data.data;
+                    var avatarData = {
+                        "object": "userAvatar",
+                        "userId": personalUserId,
+                        "url": url
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: path + "changeUserInfo",
+                        data: JSON.stringify(avatarData),
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function(msg) {
+                            // location.reload(); 
+                        },
+                        error: function(err) {
+                            alert("上传用户头像失败！");
+                        }
+                    });
+                } else {
+                    alert("上传用户头像失败！");
+                }
+
+            },
+            error: function(err) {
+                alert("上传用户头像失败！");
+            }
+        });
+    })
+</script>
+
+{{/block}}
